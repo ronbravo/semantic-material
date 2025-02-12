@@ -39,5 +39,11 @@ export default defineConfig((config) => ({
     // hmr: false,
     host: true,
     port: 9100,
+    watch: {
+      ignored: [
+        '**/*/*.html',
+        '**/*/*.less',
+      ],
+    },
   }
 }));

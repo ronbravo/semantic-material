@@ -13,10 +13,3 @@ async function start () {
 }
 
 start ();
-
-// if (import.meta.hot) {
-//   import.meta.hot.on ('vite:beforeFullReload', () => {
-//     throw new Error ('skipping full reload');
-//     console.log ('**** BLAM')
-//   });
-// }

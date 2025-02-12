@@ -76,12 +76,13 @@ function createUpdateStyleHandler (details = {}) {
     }
   }
 
-  // if (import.meta.hot) {
-  //   import.meta.hot.on ('less-file-change', async () => {
-  //     console.log ('WHAT...');
-  //     await updateStyleHandler ();
-  //   })
-  // }
+  if (import.meta.hot) {
+    import.meta.hot.on ('less-file-change', async () => {
+      console.log ('WHAT...');
+      // await updateStyleHandler ();
+    })
+  }
+
 
   return updateStyleHandler;
 }
