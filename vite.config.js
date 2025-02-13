@@ -7,8 +7,8 @@ function checkForLessCssChanges () {
   return {
     name: 'Check for LessCSS Changes',
     handleHotUpdate({ file, server }) {
+      console.log ('Locale file updated', file)
       if (file.endsWith ('.less')) {
-        console.log ('Locale file updated')
         server.ws.send ({
           type: 'custom',
           event: 'less-file-change',
@@ -39,11 +39,11 @@ export default defineConfig((config) => ({
     // hmr: false,
     host: true,
     port: 9100,
-    watch: {
-      ignored: [
-        '**/*/*.html',
-        '**/*/*.less',
-      ],
-    },
+    // watch: {
+    //   ignored: [
+    //     // '**/*/*.html',
+    //     // '**/*/*.less',
+    //   ],
+    // },
   }
 }));

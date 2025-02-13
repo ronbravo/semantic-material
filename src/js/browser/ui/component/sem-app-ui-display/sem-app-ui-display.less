@@ -1,4 +1,55 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 // trace 1
 .app.display.area {
-  border: 10px solid blue;
+  border: 1px solid blue;
+}
+body {
+  border: 10px solid red;
+}
+
+// Variables
+@normal-ui-button-values: {
+  background-color: #ebe5f0;
+  text-color: #65568e;
+  left-right-padding: 40px;
+  top-bottom-padding: 20px;
+}
+
+@container-height: 40;
+@container-shape: 20;
+@icon-size: 18;
+@left-right-padding: 24;
+@left-padding-with-icon: 16;
+@right-padding-with-icon: 24;
+@padding-between-elements: 8;
+@label-text-alignment: center;
+
+// Define button
+.normal-ui-button () {
+  @values: @normal-ui-button-values;
+
+  background-color: @values [background-color];
+  border: none;
+  color: @values [text-color];
+  cursor: pointer;
+  display: flex;
+
+  font-size: 16px;
+
+  padding: 20px 40px;
+  border-radius: 30px;
+  margin: 4px;
+
+  display: flex;
+  justify-content: @label-text-alignment;
+  align-items: center;
+}
+
+
+
+.normal.ui.button {
+  .normal-ui-button ();
 }

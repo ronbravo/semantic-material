@@ -10,12 +10,15 @@
   "scripts": {
     "browser": "",
     "browser:dev": "vite",
+    "server": "node src/js/server/start.js",
+    "server:dev": "pnpm run server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.1.1",
     "axios": "^1.7.9",
     "less": "^4.2.2",
+    "live-server": "^1.2.2",
     "substate": "^9.0.0"
   },
   "devDependencies": {

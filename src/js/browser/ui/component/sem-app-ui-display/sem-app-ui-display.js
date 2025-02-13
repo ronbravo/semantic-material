@@ -1,4 +1,9 @@
 import template from './sem-app-ui-display.html?raw';
+// import '@fontsource/roboto';
+// import './sem-app-ui-display.less';
+
+// http://localhost:9100/@fs/home/ronbravo/projects/dev/semantic-material/node_modules/.pnpm/@fontsource+roboto@5.1.1/node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2
+
 export const TAG_NAME = 'sem-app-ui-display';
 
 export class SemAppUiDisplay extends HTMLElement {
@@ -20,10 +25,16 @@ export class SemAppUiDisplay extends HTMLElement {
 
     dom.innerHTML = template;
 
+    // createUpdateStyleHandler ({
+    //   base: 'http://localhost:9100',
+    //   parent,
+    //   source: '/ui/component/sem-app-ui-display/sem-app-ui-display.less',
+    // }) ();
     createUpdateStyleHandler ({
-      base: 'http://localhost:9100',
+      // base: 'http://localhost:9101',
+      base: '',
       parent,
-      source: '/ui/component/sem-app-ui-display/sem-app-ui-display.less?inline',
+      source: '/ui/component/sem-app-ui-display/sem-app-ui-display.less',
     }) ();
   }
 }
@@ -48,9 +59,18 @@ function createUpdateStyleHandler (details = {}) {
       reply = await axios.get (url);
 
       text = reply.data;
-      start = CSS_BLOCK_START.length;
-      end = text.lastIndexOf (CSS_BLOCK_END);
-      text = text.substring (start, end).replaceAll ('\\n', '\n').trim ();
+      // start = CSS_BLOCK_START.length;
+      // end = text.lastIndexOf (CSS_BLOCK_END);
+
+      // console.log ('text:', text);
+
+      // return;
+      text = text
+        .substring (start, end)
+        .replaceAll (' [', '[')
+        .replaceAll (' (', '(')
+        // .replaceAll ('\\n', '\n')
+        .trim ();
 
       less.render (text, (err, output) => {
         if (!err) {
@@ -62,7 +82,13 @@ function createUpdateStyleHandler (details = {}) {
             dom = document.createElement ('style');
             dom.id = id;
             parent.appendChild (dom);
+
+            // dom = document.createElement ('link');
+            // dom.href = 'http://localhost:9100/@fs/home/ronbravo/projects/dev/semantic-material/node_modules/.pnpm/@fontsource+roboto@5.1.1/node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2';
+            // dom.rel= 'stylesheet';
+            // parent.appendChild (dom);
           }
+
 
           dom.textContent = output.css;
         }
