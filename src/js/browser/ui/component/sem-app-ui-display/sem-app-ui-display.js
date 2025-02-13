@@ -72,7 +72,7 @@ function createUpdateStyleHandler (details = {}) {
         // .replaceAll ('\\n', '\n')
         .trim ();
 
-      less.render (text, (err, output) => {
+      less.render (text, async (err, output) => {
         if (!err) {
           // console.log (output.css);
           id = 'component-style';
@@ -83,12 +83,22 @@ function createUpdateStyleHandler (details = {}) {
             dom.id = id;
             parent.appendChild (dom);
 
-            // dom = document.createElement ('link');
-            // dom.href = 'http://localhost:9100/@fs/home/ronbravo/projects/dev/semantic-material/node_modules/.pnpm/@fontsource+roboto@5.1.1/node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2';
-            // dom.rel= 'stylesheet';
-            // parent.appendChild (dom);
-          }
+            // ref: https://stackoverflow.com/a/71536843
+            const myFont = new FontFace ('Roboto', 'url(/font/roboto/files/roboto-latin-400-normal.woff2)');
+            await myFont.load ();
+            document.fonts.add (myFont);
 
+            // dom = document.createElement ('link');
+            // dom.rel = 'stylesheet';
+            // dom.type = 'text/css';
+            // dom.href = '/font/roboto/400.css';
+            // // dom.setAttribute ('crossorigin', 'anonymous');
+            // document.head.appendChild (dom);
+
+            // <link href="/font/roboto/400.css" rel="stylesheet" type="text/css" />
+            // parent.appendChild (dom);
+            // <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+          }
 
           dom.textContent = output.css;
         }

@@ -20,7 +20,9 @@ export async function start (details = {}) {
     wait: 1000,
     // Mount a directory to a route.
     mount: [
-      ['/', './public']
+      ['/', './public'],
+      // ['/font', './node_modules/@font-source'],
+      ['/font', '/home/ronbravo/projects/dev/semantic-material/node_modules/@fontsource'],
     ],
     // 0 = errors only, 1 = some, 2 = lots
     logLevel: 2,
