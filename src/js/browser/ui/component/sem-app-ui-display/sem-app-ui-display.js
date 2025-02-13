@@ -83,17 +83,23 @@ function createUpdateStyleHandler (details = {}) {
             dom.id = id;
             parent.appendChild (dom);
 
-            // ref: https://stackoverflow.com/a/71536843
-            const myFont = new FontFace ('Roboto', 'url(/font/roboto/files/roboto-latin-400-normal.woff2)');
-            await myFont.load ();
-            document.fonts.add (myFont);
+            // --------------------------------------------
+            // Dynamically load the font
 
             // dom = document.createElement ('link');
             // dom.rel = 'stylesheet';
             // dom.type = 'text/css';
             // dom.href = '/font/roboto/400.css';
             // // dom.setAttribute ('crossorigin', 'anonymous');
-            // document.head.appendChild (dom);
+            // parent.appendChild (dom);
+
+            // ref: https://stackoverflow.com/a/71536843
+            const myFont = new FontFace ('Roboto', 'url(/font/roboto/files/roboto-latin-400-normal.woff2)');
+            await myFont.load ();
+            document.fonts.add (myFont);
+            // --------------------------------------------
+
+
 
             // <link href="/font/roboto/400.css" rel="stylesheet" type="text/css" />
             // parent.appendChild (dom);
