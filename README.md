@@ -1,10 +1,12 @@
 # Semantic Material
 
-One of the goals of Semantic Material is to allow for updating the look of an application with the change of a css stylesheet. To understand this effect the website [CSS Zen Garden](https://csszengarden.com) is one of the best online examples of this. It shows the power of utilizing the seperation of concerns originally created for CSS styling and HTML content.
+Semantic Material is intended to be a CSS only framework. Meaning that it primarily relies on simple CSS. It can use Javascript and more advanced CSS techniques but that will be seperated out to it's own layer to be imported as needed. Ideally the base Semantic Material output of simple CSS can be used for a wide range of projects.
+
+One of the desires of Semantic Material is to allow updating the look of an application with the change of a css stylesheet. To understand this effect the website [CSS Zen Garden](https://csszengarden.com) is one of the best online examples of this capability. It shows the power of properly embracing the original seperation of concerns created for CSS styling, HTML content, and Javascript interactivity.
 
 ## Unique Class Addressing (UCA) Methodology
 
-Semantic Material also uses what is called UCA or Unique Class Addressing to target elements through the class attribute of elements with the intention of allowing the class to convey meaning rather than implementation details. It is acknowledged that this ideal is not alway possible or practical, so the emphasis is to use the methodology as a primary guide while opting-out when the situation calls for it. However, these execptions should be rare and very specific, not the norm.
+Semantic Material also uses what is called UCA or Unique Class Addressing to target elements through the class attribute of elements with the intention of allowing the class to convey meaning rather than implementation details. It is acknowledged that this ideal is not alway possible or practical, so the emphasis is to use the methodology as a primary guide. Then allowing the developer to opt-out when the situation calls for it. However, these execptions should be rare and very specific, not the norm.
 
 - use a minimum of three classes per selector address
   - NOTE: There are a few exceptions to this (ex: using `>` selectors)
@@ -14,11 +16,30 @@ Semantic Material also uses what is called UCA or Unique Class Addressing to tar
   - however, this should be used vary sparingly
 - avoid styling using elements
   - this is so multiple design can co-exist by being namespaced on a root element
+- use a prefix for the style
+  - helps with a minimum of three classes guideline
+  - helps with co-existence of multiple looks
+  - some ui frameworks might allow setting the prefix on component or app level (NOTE: research this...)
 
 ```
-app ui display
-normal ui button
-common ui button
+mui app ui display
+mui normal ui button
+mui common ui button
+
+// by theme
+mui common ui button
+fm-ui common ui button
+ui-kit common ui button
+```
+
+- **TODO:** research way to allow prefixed looks to be overwritten...
+  - probably will require use of the a build tool like [LessCss](https://lesscss.org/#)
+  - might be possible with variable usage?
+
+```
+mui common ui button        // <-- with material 3 look
+mui common ui button        // <-- with formantic ui look
+mui common ui button        // <-- with ui-kit look
 ```
 
 ## Unifying Design Systems
@@ -37,9 +58,10 @@ Semantic Material was intended to reference:
   - A fork of [Semantic UI](https://semantic-ui.com/) but tries to stay up to date
   - a wide variety of custom components built ontop of common components
   - interesting ideas around how to handle complex mobile scenarios (ex: tables)
-  - original inspiration around UCA method
+  - the original inspiration around UCA method
     - note that Semantic Material diverts from Semantic UI's method in that:
       - using short and concise text rather than full enlish phrases or senetences
+      - doing so should work nicely with UCA mehtod
       - tries to use atomic / utility / variant names only when needed as an exception
 - [UiKit](https://getuikit.com/)
   - minimalism, simplicty, and consistency
