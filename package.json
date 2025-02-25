@@ -11,7 +11,7 @@
     "browser": "",
     "browser:dev": "vite",
     "server": "node src/js/server/start.js",
-    "server:dev": "pnpm run server",
+    "server:dev": "npx nodemon --exec \"pnpm run server\" --watch ./src/js/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "substate": "^9.0.0"
   },
   "devDependencies": {
+    "nodemon": "^3.1.9",
     "vite": "^6.1.0"
   }
 }

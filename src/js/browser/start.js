@@ -1,15 +1,9 @@
-import { createApp } from './app/start.js';
-import './ui/component/sem-app-ui-display/start.js';
+import { createApp } from '/app/start.js';
+import { createDomUi } from '/ui/visual/dom/start.js';
 
-async function start () {
-  let dom, parent;
-  parent = document.querySelector ('.app.preview.area');
-  if (parent) {
-    dom = document.createElement ('sem-app-ui-display');
-    parent.appendChild (dom);
-
-    createApp ();
-  }
+export async function start (details = {}) {
+  createApp ();
+  createDomUi ();
 }
 
-start ();
+start ()

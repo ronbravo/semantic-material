@@ -34,4 +34,3 @@ async function calculateScreen (detail = {}) {
 
   console.log ('SCREEN:', JSON.stringify (screen, null, 2));
 }
-
